@@ -44,19 +44,22 @@ namespace Juego_OCA
         public void puente(FormTablero fT)
         {
             fT.moverFicha(-3);
+        
         }
 
         public void posada(FormTablero fT)
         {
+            fT.cambiarTurno();
             
         }
 
-        public void dado()
+        public void dado(FormTablero fT)
         {
-
+            fT.btnLanzarDado.Enabled = true;
+       
         }
 
-        public void resbalon(FormTablero fT)
+        public void resbalon(FormTablero fT )
         {
             fT.moverFicha(-2);
         }
@@ -64,6 +67,7 @@ namespace Juego_OCA
         public void calavera(FormTablero fT)
         {
             fT.moverFicha(-30);
+           
         }
     }
 }

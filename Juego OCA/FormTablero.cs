@@ -38,7 +38,9 @@ namespace Juego_OCA
         int respCorrecta;
         int indicePregMostrada;
         public bool esCastigo = false;
- 
+        bool yaRespondio = false;
+        bool esCastigoPosada = false;
+
         Jugador j1 = new Jugador(1, 1);
         Jugador j2 = new Jugador(1, 2);
 
@@ -49,7 +51,7 @@ namespace Juego_OCA
             for (int i = 0; i < lstPreguntas.Count; i++)
             {
                 lstPreguntasUtilizadas.Add(false);
-            } 
+            }
         }
 
         private void cargarCasillas()
@@ -120,6 +122,7 @@ namespace Juego_OCA
             if (esCastigo)
             {
                 MessageBox.Show("¡Sacaste " + resultadoDado + " en el tiro del dado! \n" + "Retrocederás " + resultadoDado + " casillas", "¡Info!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                moverFicha(-(resultadoDado));
             }
             else
             {
@@ -130,35 +133,33 @@ namespace Juego_OCA
             }
         }
 
-        public void moverFicha( int resultadoDado)
+        public void moverFicha(int resultadoDado)
         {
             if (turno == 1)
             {
                 j1.posCasilla = j1.posCasilla + resultadoDado;
-                if(j1.posCasilla <= 1)
+                if (j1.posCasilla <= 1)
                 {
                     j1.posCasilla = 1;
                 }
-                pbFicha1.Location = lstCasillas[j1.posCasilla-1].Location;
+                pbFicha1.Location = lstCasillas[j1.posCasilla - 1].Location;
                 pbFicha1.Location = new Point(pbFicha1.Location.X + 10, pbFicha1.Location.Y + 30);
                 if (esCastigo == false)
                 {
                     mostrarPregunta();
-                    cambiarTurno();
                 }
-            } else 
+            } else
             {
                 j2.posCasilla = j2.posCasilla + resultadoDado;
                 if (j2.posCasilla <= 1)
                 {
                     j2.posCasilla = 1;
                 }
-                pbFicha2.Location = lstCasillas[j2.posCasilla-1].Location;
-                pbFicha2.Location = new Point(pbFicha2.Location.X + 60, pbFicha2.Location.Y+30);
+                pbFicha2.Location = lstCasillas[j2.posCasilla - 1].Location;
+                pbFicha2.Location = new Point(pbFicha2.Location.X + 60, pbFicha2.Location.Y + 30);
                 if (esCastigo == false)
                 {
                     mostrarPregunta();
-                    cambiarTurno();
                 }
             }
             lblTurno.Text = turno.ToString();
@@ -169,8 +170,8 @@ namespace Juego_OCA
 
         public void mostrarPregunta()
         {
-            indicePregMostrada = rnd.Next(1, 51)-1;
-            if(lstPreguntasUtilizadas[indicePregMostrada] == false)
+            indicePregMostrada = rnd.Next(1, 51) - 1;
+            if (lstPreguntasUtilizadas[indicePregMostrada] == false)
             {
                 txtPregunta.Text = indicePregMostrada + lstPreguntas[indicePregMostrada] + lstRespuestas[indicePregMostrada];
             }
@@ -181,16 +182,15 @@ namespace Juego_OCA
             }
         }
 
-        public void compararRespuesta(int n )
+        public void compararRespuesta(int n)
         {
-            if (respCorrecta == lstRespCorrectas[n] )
+            if (respCorrecta == lstRespCorrectas[n])
             {
                 MessageBox.Show("Respuesta Correcta, quedate ahí", "¡ACERTASTE!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 esCastigo = false;
             }
-            else 
+            else
             {
-                turnoCastigo = turno;
                 esCastigo = true;
                 Castigo c = new Castigo();
                 MessageBox.Show("Escogiste la equivocada tu CASTIGO es \n " + c.tipo + "\n" + c.descripcion, "¡OH OH CASTIGO!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
@@ -213,36 +213,54 @@ namespace Juego_OCA
                         break;
                 }
             }
-            //esCastigo = false;
-            //cambiarTurno();
+            cambiarTurno();
         }
 
         public void cambiarTurno()
-        {
-            if(turno == 1)
+        { int cont = 0;
+            if (turno == 1)
             {
                 turno++;
-            } else
+            }
+            else
             {
                 turno--;
             }
+             if (turno == 1 && esCastigoPosada)
+            {
+                cont++;
+                cambiarTurno();
+            }
+            esCastigo = false;
+            btnResp1.Enabled = true;
+            btnResp2.Enabled = true;
+            btnResp3.Enabled = true;
             btnLanzarDado.Enabled = true;
         }
 
         private void btnResp1_Click(object sender, EventArgs e)
         {
+            yaRespondio = true;
+            btnResp2.Enabled = false;
+            btnResp3.Enabled = false;
             respCorrecta = 1;
             compararRespuesta(indicePregMostrada);
         }
 
         private void btnResp2_Click(object sender, EventArgs e)
         {
+            yaRespondio = true;
+            btnResp1.Enabled = false;
+            btnResp3.Enabled = false;
             respCorrecta = 2;
             compararRespuesta(indicePregMostrada);
         }
 
         private void btnResp3_Click(object sender, EventArgs e)
         {
+            yaRespondio = true;
+            btnResp1.Enabled = false;
+            btnResp2.Enabled = false;
             respCorrecta = 3;
             compararRespuesta(indicePregMostrada);
         }
