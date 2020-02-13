@@ -33,8 +33,6 @@
             this.btnJugar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.picturebOCA = new System.Windows.Forms.PictureBox();
-            this.btnResponder = new System.Windows.Forms.Button();
-            this.txtRespuesta = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.picturebOCA)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,32 +84,11 @@
             this.picturebOCA.TabIndex = 7;
             this.picturebOCA.TabStop = false;
             // 
-            // btnResponder
-            // 
-            this.btnResponder.BackColor = System.Drawing.Color.Black;
-            this.btnResponder.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResponder.ForeColor = System.Drawing.Color.White;
-            this.btnResponder.Location = new System.Drawing.Point(140, 94);
-            this.btnResponder.Name = "btnResponder";
-            this.btnResponder.Size = new System.Drawing.Size(117, 35);
-            this.btnResponder.TabIndex = 13;
-            this.btnResponder.Text = "¡Responder!";
-            this.btnResponder.UseVisualStyleBackColor = false;
-            // 
-            // txtRespuesta
-            // 
-            this.txtRespuesta.Location = new System.Drawing.Point(58, 94);
-            this.txtRespuesta.Name = "txtRespuesta";
-            this.txtRespuesta.Size = new System.Drawing.Size(65, 20);
-            this.txtRespuesta.TabIndex = 12;
-            // 
             // FormInicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(985, 632);
-            this.Controls.Add(this.btnResponder);
-            this.Controls.Add(this.txtRespuesta);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnJugar);
             this.Controls.Add(this.label1);
@@ -132,7 +109,5 @@
         private System.Windows.Forms.Button btnJugar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox picturebOCA;
-        private System.Windows.Forms.Button btnResponder;
-        private System.Windows.Forms.TextBox txtRespuesta;
     }
 }

@@ -1167,6 +1167,7 @@
             this.btnResp1.TabIndex = 14;
             this.btnResp1.Text = "1";
             this.btnResp1.UseVisualStyleBackColor = false;
+            this.btnResp1.Click += new System.EventHandler(this.btnResp1_Click);
             // 
             // btnResp2
             // 
@@ -1179,6 +1180,7 @@
             this.btnResp2.TabIndex = 15;
             this.btnResp2.Text = "2";
             this.btnResp2.UseVisualStyleBackColor = false;
+            this.btnResp2.Click += new System.EventHandler(this.btnResp2_Click);
             // 
             // btnResp3
             // 
@@ -1191,6 +1193,7 @@
             this.btnResp3.TabIndex = 16;
             this.btnResp3.Text = "3";
             this.btnResp3.UseVisualStyleBackColor = false;
+            this.btnResp3.Click += new System.EventHandler(this.btnResp3_Click);
             // 
             // FormTablero
             // 

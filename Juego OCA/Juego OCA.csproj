@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Castigo.cs" />
     <Compile Include="FormInicio.cs">
       <SubType>Form</SubType>
     </Compile>

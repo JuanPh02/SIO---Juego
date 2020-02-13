@@ -10,12 +10,13 @@ namespace Juego_OCA
     {
         public int posCasilla;
         public int turno;
+        
 
         public Jugador(int pCasilla, int t)
         {
             this.posCasilla = pCasilla;
             this.turno = t;
         }
-
+        
     }
 }

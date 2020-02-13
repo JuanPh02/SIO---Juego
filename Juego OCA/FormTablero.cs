@@ -18,6 +18,7 @@ namespace Juego_OCA
             InitializeComponent();
             cargarCasillas();
             cargarDatosPreguntas();
+            cargarLstPregUtilizadas();
             lblCasillaJ1.Text = j1.posCasilla.ToString();
             lblCasillaJ2.Text = j2.posCasilla.ToString();
             turno = 1;
@@ -28,17 +29,29 @@ namespace Juego_OCA
         public List<string> lstPreguntas = new List<string>();
         public List<string> lstRespuestas = new List<string>();
         public List<int> lstRespCorrectas = new List<int>();
+        public List<bool> lstPreguntasUtilizadas = new List<bool>(49);
 
         //SoundPlayer sFicha = new SoundPlayer(Application.StartupPath + @"\Sonido\ficha.wav");
         Random rnd = new Random();
-        int turno;
+        public int turno;
+        int respCorrecta;
+        int indicePregMostrada;
+        bool siYaRespondio = false;
  
         Jugador j1 = new Jugador(1, 1);
         Jugador j2 = new Jugador(1, 2);
 
         manejarBD bd = new manejarBD();
 
-        public void cargarCasillas()
+        private void cargarLstPregUtilizadas()
+        {
+            for (int i = 0; i < lstPreguntas.Count; i++)
+            {
+                lstPreguntasUtilizadas.Add(false);
+            } 
+        }
+
+        private void cargarCasillas()
         {
             lstCasillas.Add(pb1);
             lstCasillas.Add(pb2);
@@ -100,7 +113,7 @@ namespace Juego_OCA
             }
         }
 
-        private void btnLanzarDado_Click(object sender, EventArgs e)
+        public void btnLanzarDado_Click(object sender, EventArgs e)
         {
             int resultadoDado = rnd.Next(1, 7);
             MessageBox.Show("¡Sacaste " + resultadoDado + " en el tiro del dado!", "¡Info!", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -108,35 +121,75 @@ namespace Juego_OCA
             moverFicha(resultadoDado);
         }
 
-        private void moverFicha( int resultadoDado)
+        public void moverFicha( int resultadoDado)
         {
             if (turno == 1)
             {
                 j1.posCasilla = j1.posCasilla + resultadoDado;
                 pbFicha1.Location = lstCasillas[j1.posCasilla-1].Location;
                 pbFicha1.Location = new Point(pbFicha1.Location.X + 10, pbFicha1.Location.Y + 30);
+                mostrarPregunta();
                 turno++;
             } else 
             {
                 j2.posCasilla = j2.posCasilla + resultadoDado;
                 pbFicha2.Location = lstCasillas[j2.posCasilla-1].Location;
                 pbFicha2.Location = new Point(pbFicha2.Location.X + 60, pbFicha2.Location.Y+30);
+                mostrarPregunta();
                 turno--;
             }
             lblTurno.Text = turno.ToString();
             lblCasillaJ1.Text = j1.posCasilla.ToString();
             lblCasillaJ2.Text = j2.posCasilla.ToString();
-            mostrarPregunta();
             //sFicha.Play();
         }
 
-        private void mostrarPregunta()
+        public void mostrarPregunta()
         {
-            int numAzar = rnd.Next(1, 50);
-            txtPregunta.Text = lstPreguntas[numAzar] + lstRespuestas[numAzar];
-            
+            indicePregMostrada = rnd.Next(1, 51)-1;
+            if(lstPreguntasUtilizadas[indicePregMostrada] == false)
+            {
+                txtPregunta.Text = indicePregMostrada + lstPreguntas[indicePregMostrada] + lstRespuestas[indicePregMostrada];
+            }
+            else
+            {
+                lstPreguntasUtilizadas[indicePregMostrada] = true;
+                mostrarPregunta();
+            }
         }
 
-       
+        public void compararRespuesta(int n )
+        {
+            if(respCorrecta == lstRespCorrectas[n] && siYaRespondio)
+            {
+                MessageBox.Show("Respuesta Correcta, quedate ahí", "¡ACERTASTE!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (siYaRespondio)
+            {
+                Castigo c = new Castigo();
+                MessageBox.Show("Escogiste la equivocada tu CASTIGO es \n " + c.tipo + "\n" + c.descripcion, "¡OH OH CASTIGO!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+        }
+
+        private void btnResp1_Click(object sender, EventArgs e)
+        {
+            siYaRespondio = true;
+            respCorrecta = 1;
+            compararRespuesta(indicePregMostrada);
+        }
+
+        private void btnResp2_Click(object sender, EventArgs e)
+        {
+            siYaRespondio = true;
+            respCorrecta = 2;
+            compararRespuesta(indicePregMostrada);
+        }
+
+        private void btnResp3_Click(object sender, EventArgs e)
+        {
+            siYaRespondio = true;
+            respCorrecta = 3;
+            compararRespuesta(indicePregMostrada);
+        }
     }
 }
