@@ -34,9 +34,10 @@ namespace Juego_OCA
         //SoundPlayer sFicha = new SoundPlayer(Application.StartupPath + @"\Sonido\ficha.wav");
         Random rnd = new Random();
         public int turno;
+        public int turnoCastigo;
         int respCorrecta;
         int indicePregMostrada;
-        bool siYaRespondio = false;
+        public bool esCastigo = false;
  
         Jugador j1 = new Jugador(1, 1);
         Jugador j2 = new Jugador(1, 2);
@@ -116,9 +117,17 @@ namespace Juego_OCA
         public void btnLanzarDado_Click(object sender, EventArgs e)
         {
             int resultadoDado = rnd.Next(1, 7);
-            MessageBox.Show("¡Sacaste " + resultadoDado + " en el tiro del dado!", "¡Info!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            lblDado.Text = Convert.ToString(resultadoDado);
-            moverFicha(resultadoDado);
+            if (esCastigo)
+            {
+                MessageBox.Show("¡Sacaste " + resultadoDado + " en el tiro del dado! \n" + "Retrocederás " + resultadoDado + " casillas", "¡Info!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("¡Sacaste " + resultadoDado + " en el tiro del dado!", "¡Info!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                lblDado.Text = Convert.ToString(resultadoDado);
+                moverFicha(resultadoDado);
+                btnLanzarDado.Enabled = false;
+            }
         }
 
         public void moverFicha( int resultadoDado)
@@ -126,17 +135,31 @@ namespace Juego_OCA
             if (turno == 1)
             {
                 j1.posCasilla = j1.posCasilla + resultadoDado;
+                if(j1.posCasilla <= 1)
+                {
+                    j1.posCasilla = 1;
+                }
                 pbFicha1.Location = lstCasillas[j1.posCasilla-1].Location;
                 pbFicha1.Location = new Point(pbFicha1.Location.X + 10, pbFicha1.Location.Y + 30);
-                mostrarPregunta();
-                turno++;
+                if (esCastigo == false)
+                {
+                    mostrarPregunta();
+                    cambiarTurno();
+                }
             } else 
             {
                 j2.posCasilla = j2.posCasilla + resultadoDado;
+                if (j2.posCasilla <= 1)
+                {
+                    j2.posCasilla = 1;
+                }
                 pbFicha2.Location = lstCasillas[j2.posCasilla-1].Location;
                 pbFicha2.Location = new Point(pbFicha2.Location.X + 60, pbFicha2.Location.Y+30);
-                mostrarPregunta();
-                turno--;
+                if (esCastigo == false)
+                {
+                    mostrarPregunta();
+                    cambiarTurno();
+                }
             }
             lblTurno.Text = turno.ToString();
             lblCasillaJ1.Text = j1.posCasilla.ToString();
@@ -160,34 +183,66 @@ namespace Juego_OCA
 
         public void compararRespuesta(int n )
         {
-            if(respCorrecta == lstRespCorrectas[n] && siYaRespondio)
+            if (respCorrecta == lstRespCorrectas[n] )
             {
                 MessageBox.Show("Respuesta Correcta, quedate ahí", "¡ACERTASTE!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                esCastigo = false;
             }
-            else if (siYaRespondio)
+            else 
             {
+                turnoCastigo = turno;
+                esCastigo = true;
                 Castigo c = new Castigo();
                 MessageBox.Show("Escogiste la equivocada tu CASTIGO es \n " + c.tipo + "\n" + c.descripcion, "¡OH OH CASTIGO!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                switch (c.numCastigo)
+                {
+                    case 1:
+                        c.puente(this);
+                        break;
+                    case 2:
+                        c.posada(this);
+                        break;
+                    case 3:
+                        c.dado(this);
+                        break;
+                    case 4:
+                        c.resbalon(this);
+                        break;
+                    case 5:
+                        c.calavera(this);
+                        break;
+                }
             }
+            //esCastigo = false;
+            //cambiarTurno();
+        }
+
+        public void cambiarTurno()
+        {
+            if(turno == 1)
+            {
+                turno++;
+            } else
+            {
+                turno--;
+            }
+            btnLanzarDado.Enabled = true;
         }
 
         private void btnResp1_Click(object sender, EventArgs e)
         {
-            siYaRespondio = true;
             respCorrecta = 1;
             compararRespuesta(indicePregMostrada);
         }
 
         private void btnResp2_Click(object sender, EventArgs e)
         {
-            siYaRespondio = true;
             respCorrecta = 2;
             compararRespuesta(indicePregMostrada);
         }
 
         private void btnResp3_Click(object sender, EventArgs e)
         {
-            siYaRespondio = true;
             respCorrecta = 3;
             compararRespuesta(indicePregMostrada);
         }

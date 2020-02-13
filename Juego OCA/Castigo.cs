@@ -9,7 +9,7 @@ namespace Juego_OCA
     class Castigo
     {
         Random rnd = new Random();
-        int numCastigo;
+        public int numCastigo;
         public string tipo;
         public string descripcion;
 
@@ -41,19 +41,29 @@ namespace Juego_OCA
             }
         }
 
-        public void Puente(FormTablero fT)
+        public void puente(FormTablero fT)
         {
             fT.moverFicha(-3);
         }
 
-        public void Posada(FormTablero fT)
+        public void posada(FormTablero fT)
         {
             
         }
 
-        public void Dado()
+        public void dado()
         {
 
+        }
+
+        public void resbalon(FormTablero fT)
+        {
+            fT.moverFicha(-2);
+        }
+
+        public void calavera(FormTablero fT)
+        {
+            fT.moverFicha(-30);
         }
     }
 }

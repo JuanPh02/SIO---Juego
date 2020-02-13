@@ -41,7 +41,7 @@
             this.btnSalir.BackColor = System.Drawing.Color.Blue;
             this.btnSalir.Font = new System.Drawing.Font("MV Boli", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.ForeColor = System.Drawing.Color.White;
-            this.btnSalir.Location = new System.Drawing.Point(339, 450);
+            this.btnSalir.Location = new System.Drawing.Point(350, 462);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(282, 85);
             this.btnSalir.TabIndex = 11;
@@ -54,7 +54,7 @@
             this.btnJugar.BackColor = System.Drawing.Color.Red;
             this.btnJugar.Font = new System.Drawing.Font("MV Boli", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnJugar.ForeColor = System.Drawing.Color.White;
-            this.btnJugar.Location = new System.Drawing.Point(339, 348);
+            this.btnJugar.Location = new System.Drawing.Point(350, 360);
             this.btnJugar.Name = "btnJugar";
             this.btnJugar.Size = new System.Drawing.Size(282, 85);
             this.btnJugar.TabIndex = 10;
@@ -67,7 +67,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Reality Hyper", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(245, 266);
+            this.label1.Location = new System.Drawing.Point(256, 278);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(485, 46);
             this.label1.TabIndex = 8;
@@ -77,7 +77,7 @@
             // 
             this.picturebOCA.BackColor = System.Drawing.Color.Transparent;
             this.picturebOCA.Image = ((System.Drawing.Image)(resources.GetObject("picturebOCA.Image")));
-            this.picturebOCA.Location = new System.Drawing.Point(367, 38);
+            this.picturebOCA.Location = new System.Drawing.Point(378, 50);
             this.picturebOCA.Name = "picturebOCA";
             this.picturebOCA.Size = new System.Drawing.Size(225, 225);
             this.picturebOCA.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -88,7 +88,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(985, 632);
+            this.ClientSize = new System.Drawing.Size(1000, 632);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnJugar);
             this.Controls.Add(this.label1);

@@ -47,6 +47,9 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnResp3 = new System.Windows.Forms.Button();
+            this.btnResp2 = new System.Windows.Forms.Button();
+            this.btnResp1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtPregunta = new System.Windows.Forms.TextBox();
             this.pbFicha2 = new System.Windows.Forms.PictureBox();
@@ -126,9 +129,6 @@
             this.label41 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
-            this.btnResp1 = new System.Windows.Forms.Button();
-            this.btnResp2 = new System.Windows.Forms.Button();
-            this.btnResp3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbJug2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbJug1)).BeginInit();
@@ -363,6 +363,45 @@
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Toca tu respuesta";
+            // 
+            // btnResp3
+            // 
+            this.btnResp3.BackColor = System.Drawing.Color.Blue;
+            this.btnResp3.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResp3.ForeColor = System.Drawing.Color.White;
+            this.btnResp3.Location = new System.Drawing.Point(230, 32);
+            this.btnResp3.Name = "btnResp3";
+            this.btnResp3.Size = new System.Drawing.Size(88, 35);
+            this.btnResp3.TabIndex = 16;
+            this.btnResp3.Text = "3";
+            this.btnResp3.UseVisualStyleBackColor = false;
+            this.btnResp3.Click += new System.EventHandler(this.btnResp3_Click);
+            // 
+            // btnResp2
+            // 
+            this.btnResp2.BackColor = System.Drawing.Color.Black;
+            this.btnResp2.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResp2.ForeColor = System.Drawing.Color.White;
+            this.btnResp2.Location = new System.Drawing.Point(118, 32);
+            this.btnResp2.Name = "btnResp2";
+            this.btnResp2.Size = new System.Drawing.Size(88, 35);
+            this.btnResp2.TabIndex = 15;
+            this.btnResp2.Text = "2";
+            this.btnResp2.UseVisualStyleBackColor = false;
+            this.btnResp2.Click += new System.EventHandler(this.btnResp2_Click);
+            // 
+            // btnResp1
+            // 
+            this.btnResp1.BackColor = System.Drawing.Color.Red;
+            this.btnResp1.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResp1.ForeColor = System.Drawing.Color.White;
+            this.btnResp1.Location = new System.Drawing.Point(6, 32);
+            this.btnResp1.Name = "btnResp1";
+            this.btnResp1.Size = new System.Drawing.Size(88, 35);
+            this.btnResp1.TabIndex = 14;
+            this.btnResp1.Text = "1";
+            this.btnResp1.UseVisualStyleBackColor = false;
+            this.btnResp1.Click += new System.EventHandler(this.btnResp1_Click);
             // 
             // groupBox2
             // 
@@ -1156,51 +1195,12 @@
             this.label43.TabIndex = 84;
             this.label43.Text = "OCA";
             // 
-            // btnResp1
-            // 
-            this.btnResp1.BackColor = System.Drawing.Color.Red;
-            this.btnResp1.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResp1.ForeColor = System.Drawing.Color.White;
-            this.btnResp1.Location = new System.Drawing.Point(6, 32);
-            this.btnResp1.Name = "btnResp1";
-            this.btnResp1.Size = new System.Drawing.Size(88, 35);
-            this.btnResp1.TabIndex = 14;
-            this.btnResp1.Text = "1";
-            this.btnResp1.UseVisualStyleBackColor = false;
-            this.btnResp1.Click += new System.EventHandler(this.btnResp1_Click);
-            // 
-            // btnResp2
-            // 
-            this.btnResp2.BackColor = System.Drawing.Color.Black;
-            this.btnResp2.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResp2.ForeColor = System.Drawing.Color.White;
-            this.btnResp2.Location = new System.Drawing.Point(118, 32);
-            this.btnResp2.Name = "btnResp2";
-            this.btnResp2.Size = new System.Drawing.Size(88, 35);
-            this.btnResp2.TabIndex = 15;
-            this.btnResp2.Text = "2";
-            this.btnResp2.UseVisualStyleBackColor = false;
-            this.btnResp2.Click += new System.EventHandler(this.btnResp2_Click);
-            // 
-            // btnResp3
-            // 
-            this.btnResp3.BackColor = System.Drawing.Color.Blue;
-            this.btnResp3.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResp3.ForeColor = System.Drawing.Color.White;
-            this.btnResp3.Location = new System.Drawing.Point(230, 32);
-            this.btnResp3.Name = "btnResp3";
-            this.btnResp3.Size = new System.Drawing.Size(88, 35);
-            this.btnResp3.TabIndex = 16;
-            this.btnResp3.Text = "3";
-            this.btnResp3.UseVisualStyleBackColor = false;
-            this.btnResp3.Click += new System.EventHandler(this.btnResp3_Click);
-            // 
             // FormTablero
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
-            this.ClientSize = new System.Drawing.Size(997, 632);
+            this.ClientSize = new System.Drawing.Size(1000, 632);
             this.Controls.Add(this.label43);
             this.Controls.Add(this.label42);
             this.Controls.Add(this.label41);
@@ -1384,7 +1384,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Button btnLanzarDado;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -1444,5 +1443,6 @@
         private System.Windows.Forms.Button btnResp3;
         private System.Windows.Forms.Button btnResp2;
         private System.Windows.Forms.Button btnResp1;
+        public System.Windows.Forms.Button btnLanzarDado;
     }
 }
