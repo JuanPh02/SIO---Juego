@@ -58,7 +58,8 @@ namespace Juego_OCA
                 resp1 = leer[0].ToString();
                 resp2 = leer[1].ToString();
                 resp3 = leer[2].ToString();
-                listaRespuestas.Add("\n" + " 1) " + resp1 + "\n 2) \n" + resp2 + "\n 3) " + resp3);
+                //listaRespuestas.Add("\n 1) " + resp1 + "\n 2) " + resp2 + "\n 3) " + resp3);
+                listaRespuestas.Add(string.Format("{0}1) {1} {0}2) {2} {0}3) {3} ", Environment.NewLine, resp1, resp2, resp3));
             }
             leer.Close();
             conectar.Close();

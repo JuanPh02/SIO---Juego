@@ -108,15 +108,6 @@ namespace Juego_OCA
             moverFicha(resultadoDado);
         }
 
-        private void btnResponder_Click(object sender, EventArgs e)
-        {
-            
-            /*for (int i=0; i < lstRespCorrectas.Count; i++)
-            {
-                txtPregunta.Text += ("Respuesta " + i + "= \n" + lstRespCorrectas[i].ToString());
-            }*/
-        }
-
         private void moverFicha( int resultadoDado)
         {
             if (turno == 1)
@@ -143,6 +134,7 @@ namespace Juego_OCA
         {
             int numAzar = rnd.Next(1, 50);
             txtPregunta.Text = lstPreguntas[numAzar] + lstRespuestas[numAzar];
+            
         }
 
        

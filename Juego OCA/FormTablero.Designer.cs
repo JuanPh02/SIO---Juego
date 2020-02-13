@@ -47,8 +47,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.btnResponder = new System.Windows.Forms.Button();
-            this.txtRespuesta = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtPregunta = new System.Windows.Forms.TextBox();
             this.pbFicha2 = new System.Windows.Forms.PictureBox();
@@ -128,6 +126,9 @@
             this.label41 = new System.Windows.Forms.Label();
             this.label42 = new System.Windows.Forms.Label();
             this.label43 = new System.Windows.Forms.Label();
+            this.btnResp1 = new System.Windows.Forms.Button();
+            this.btnResp2 = new System.Windows.Forms.Button();
+            this.btnResp3 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbJug2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbJug1)).BeginInit();
@@ -183,7 +184,7 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Reality Hyper", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(661, 97);
+            this.label1.Location = new System.Drawing.Point(682, 97);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(279, 26);
             this.label1.TabIndex = 34;
@@ -227,9 +228,9 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(655, 126);
+            this.groupBox1.Location = new System.Drawing.Point(647, 126);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(293, 235);
+            this.groupBox1.Size = new System.Drawing.Size(338, 235);
             this.groupBox1.TabIndex = 37;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "ESTADO DEL JUEGO";
@@ -237,7 +238,7 @@
             // lblCasillaJ2
             // 
             this.lblCasillaJ2.AutoSize = true;
-            this.lblCasillaJ2.Location = new System.Drawing.Point(230, 131);
+            this.lblCasillaJ2.Location = new System.Drawing.Point(282, 133);
             this.lblCasillaJ2.Name = "lblCasillaJ2";
             this.lblCasillaJ2.Size = new System.Drawing.Size(0, 25);
             this.lblCasillaJ2.TabIndex = 17;
@@ -245,7 +246,7 @@
             // lblCasillaJ1
             // 
             this.lblCasillaJ1.AutoSize = true;
-            this.lblCasillaJ1.Location = new System.Drawing.Point(230, 79);
+            this.lblCasillaJ1.Location = new System.Drawing.Point(282, 81);
             this.lblCasillaJ1.Name = "lblCasillaJ1";
             this.lblCasillaJ1.Size = new System.Drawing.Size(0, 25);
             this.lblCasillaJ1.TabIndex = 16;
@@ -253,7 +254,7 @@
             // lblDado
             // 
             this.lblDado.AutoSize = true;
-            this.lblDado.Location = new System.Drawing.Point(230, 34);
+            this.lblDado.Location = new System.Drawing.Point(282, 36);
             this.lblDado.Name = "lblDado";
             this.lblDado.Size = new System.Drawing.Size(0, 25);
             this.lblDado.TabIndex = 15;
@@ -261,7 +262,7 @@
             // lblTurno
             // 
             this.lblTurno.AutoSize = true;
-            this.lblTurno.Location = new System.Drawing.Point(98, 34);
+            this.lblTurno.Location = new System.Drawing.Point(133, 30);
             this.lblTurno.Name = "lblTurno";
             this.lblTurno.Size = new System.Drawing.Size(0, 25);
             this.lblTurno.TabIndex = 14;
@@ -269,7 +270,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(162, 131);
+            this.label9.Location = new System.Drawing.Point(214, 133);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(71, 25);
             this.label9.TabIndex = 13;
@@ -278,7 +279,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(162, 79);
+            this.label8.Location = new System.Drawing.Point(214, 81);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(71, 25);
             this.label8.TabIndex = 12;
@@ -287,19 +288,20 @@
             // btnLanzarDado
             // 
             this.btnLanzarDado.BackColor = System.Drawing.Color.Black;
+            this.btnLanzarDado.Font = new System.Drawing.Font("MV Boli", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLanzarDado.ForeColor = System.Drawing.Color.White;
-            this.btnLanzarDado.Location = new System.Drawing.Point(50, 175);
+            this.btnLanzarDado.Location = new System.Drawing.Point(40, 169);
             this.btnLanzarDado.Name = "btnLanzarDado";
-            this.btnLanzarDado.Size = new System.Drawing.Size(206, 53);
+            this.btnLanzarDado.Size = new System.Drawing.Size(246, 53);
             this.btnLanzarDado.TabIndex = 9;
-            this.btnLanzarDado.Text = "Lanzar Dado";
+            this.btnLanzarDado.Text = "¡Lanzar Dado!";
             this.btnLanzarDado.UseVisualStyleBackColor = false;
             this.btnLanzarDado.Click += new System.EventHandler(this.btnLanzarDado_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(163, 28);
+            this.label7.Location = new System.Drawing.Point(215, 30);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(61, 25);
             this.label7.TabIndex = 10;
@@ -308,7 +310,7 @@
             // pbJug2
             // 
             this.pbJug2.Image = global::Juego_OCA.Properties.Resources.FichaC2L;
-            this.pbJug2.Location = new System.Drawing.Point(97, 131);
+            this.pbJug2.Location = new System.Drawing.Point(135, 125);
             this.pbJug2.Name = "pbJug2";
             this.pbJug2.Size = new System.Drawing.Size(38, 38);
             this.pbJug2.TabIndex = 8;
@@ -317,7 +319,7 @@
             // pbJug1
             // 
             this.pbJug1.Image = global::Juego_OCA.Properties.Resources.FichaC1L;
-            this.pbJug1.Location = new System.Drawing.Point(97, 79);
+            this.pbJug1.Location = new System.Drawing.Point(135, 73);
             this.pbJug1.Name = "pbJug1";
             this.pbJug1.Size = new System.Drawing.Size(38, 38);
             this.pbJug1.TabIndex = 7;
@@ -326,7 +328,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(-6, 131);
+            this.label6.Location = new System.Drawing.Point(29, 127);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(104, 25);
             this.label6.TabIndex = 4;
@@ -335,7 +337,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(-5, 79);
+            this.label5.Location = new System.Drawing.Point(30, 75);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(99, 25);
             this.label5.TabIndex = 3;
@@ -344,7 +346,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(27, 28);
+            this.label4.Location = new System.Drawing.Point(62, 24);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 25);
             this.label4.TabIndex = 1;
@@ -352,34 +354,15 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.btnResponder);
-            this.groupBox3.Controls.Add(this.txtRespuesta);
+            this.groupBox3.Controls.Add(this.btnResp3);
+            this.groupBox3.Controls.Add(this.btnResp2);
+            this.groupBox3.Controls.Add(this.btnResp1);
             this.groupBox3.Location = new System.Drawing.Point(8, 146);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(268, 83);
+            this.groupBox3.Size = new System.Drawing.Size(324, 83);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Ingrese el número de respuesta";
-            // 
-            // btnResponder
-            // 
-            this.btnResponder.BackColor = System.Drawing.Color.Black;
-            this.btnResponder.ForeColor = System.Drawing.Color.White;
-            this.btnResponder.Location = new System.Drawing.Point(124, 36);
-            this.btnResponder.Name = "btnResponder";
-            this.btnResponder.Size = new System.Drawing.Size(117, 35);
-            this.btnResponder.TabIndex = 1;
-            this.btnResponder.Text = "¡Responder!";
-            this.btnResponder.UseVisualStyleBackColor = false;
-            this.btnResponder.Click += new System.EventHandler(this.btnResponder_Click);
-            // 
-            // txtRespuesta
-            // 
-            this.txtRespuesta.Location = new System.Drawing.Point(42, 36);
-            this.txtRespuesta.Name = "txtRespuesta";
-            this.txtRespuesta.Size = new System.Drawing.Size(65, 33);
-            this.txtRespuesta.TabIndex = 0;
-            this.txtRespuesta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRespuesta_KeyPress);
+            this.groupBox3.Text = "Toca tu respuesta";
             // 
             // groupBox2
             // 
@@ -388,19 +371,20 @@
             this.groupBox2.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(647, 367);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(293, 246);
+            this.groupBox2.Size = new System.Drawing.Size(338, 246);
             this.groupBox2.TabIndex = 38;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "PREGUNTAS";
             // 
             // txtPregunta
             // 
+            this.txtPregunta.Font = new System.Drawing.Font("ISOCPEUR", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPregunta.Location = new System.Drawing.Point(14, 19);
             this.txtPregunta.Multiline = true;
             this.txtPregunta.Name = "txtPregunta";
             this.txtPregunta.ReadOnly = true;
             this.txtPregunta.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtPregunta.Size = new System.Drawing.Size(262, 122);
+            this.txtPregunta.Size = new System.Drawing.Size(318, 122);
             this.txtPregunta.TabIndex = 2;
             this.txtPregunta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPregunta_KeyPress);
             // 
@@ -419,7 +403,7 @@
             // 
             this.pictureBox31.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox31.Image = global::Juego_OCA.Properties.Resources.melo;
-            this.pictureBox31.Location = new System.Drawing.Point(728, 28);
+            this.pictureBox31.Location = new System.Drawing.Point(736, 28);
             this.pictureBox31.Name = "pictureBox31";
             this.pictureBox31.Size = new System.Drawing.Size(152, 66);
             this.pictureBox31.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -1172,12 +1156,48 @@
             this.label43.TabIndex = 84;
             this.label43.Text = "OCA";
             // 
+            // btnResp1
+            // 
+            this.btnResp1.BackColor = System.Drawing.Color.Red;
+            this.btnResp1.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResp1.ForeColor = System.Drawing.Color.White;
+            this.btnResp1.Location = new System.Drawing.Point(6, 32);
+            this.btnResp1.Name = "btnResp1";
+            this.btnResp1.Size = new System.Drawing.Size(88, 35);
+            this.btnResp1.TabIndex = 14;
+            this.btnResp1.Text = "1";
+            this.btnResp1.UseVisualStyleBackColor = false;
+            // 
+            // btnResp2
+            // 
+            this.btnResp2.BackColor = System.Drawing.Color.Black;
+            this.btnResp2.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResp2.ForeColor = System.Drawing.Color.White;
+            this.btnResp2.Location = new System.Drawing.Point(118, 32);
+            this.btnResp2.Name = "btnResp2";
+            this.btnResp2.Size = new System.Drawing.Size(88, 35);
+            this.btnResp2.TabIndex = 15;
+            this.btnResp2.Text = "2";
+            this.btnResp2.UseVisualStyleBackColor = false;
+            // 
+            // btnResp3
+            // 
+            this.btnResp3.BackColor = System.Drawing.Color.Blue;
+            this.btnResp3.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResp3.ForeColor = System.Drawing.Color.White;
+            this.btnResp3.Location = new System.Drawing.Point(230, 32);
+            this.btnResp3.Name = "btnResp3";
+            this.btnResp3.Size = new System.Drawing.Size(88, 35);
+            this.btnResp3.TabIndex = 16;
+            this.btnResp3.Text = "3";
+            this.btnResp3.UseVisualStyleBackColor = false;
+            // 
             // FormTablero
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Snow;
-            this.ClientSize = new System.Drawing.Size(985, 632);
+            this.ClientSize = new System.Drawing.Size(997, 632);
             this.Controls.Add(this.label43);
             this.Controls.Add(this.label42);
             this.Controls.Add(this.label41);
@@ -1269,7 +1289,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbJug2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbJug1)).EndInit();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbFicha2)).EndInit();
@@ -1367,8 +1386,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button btnResponder;
-        private System.Windows.Forms.TextBox txtRespuesta;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.PictureBox pbFicha2;
         private System.Windows.Forms.PictureBox pictureBox1;
@@ -1421,5 +1438,8 @@
         private System.Windows.Forms.Label lblTurno;
         private System.Windows.Forms.Label lblCasillaJ2;
         private System.Windows.Forms.Label lblCasillaJ1;
+        private System.Windows.Forms.Button btnResp3;
+        private System.Windows.Forms.Button btnResp2;
+        private System.Windows.Forms.Button btnResp1;
     }
 }
