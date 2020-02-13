@@ -1,0 +1,39 @@
+C:\Users\USUARIO\Desktop\Juego OCA\Juego OCA\Juego OCA\bin\Debug\Juego OCA.exe.config
+C:\Users\USUARIO\Desktop\Juego OCA\Juego OCA\Juego OCA\bin\Debug\Juego OCA.exe
+C:\Users\USUARIO\Desktop\Juego OCA\Juego OCA\Juego OCA\bin\Debug\Juego OCA.pdb
+C:\Users\USUARIO\Desktop\Juego OCA\Juego OCA\Juego OCA\obj\Debug\Juego OCA.csprojResolveAssemblyReference.cache
+C:\Users\USUARIO\Desktop\Juego OCA\Juego OCA\Juego OCA\obj\Debug\Juego_OCA.FormMain.resources
+C:\Users\USUARIO\Desktop\Juego OCA\Juego OCA\Juego OCA\obj\Debug\Juego_OCA.Properties.Resources.resources
+C:\Users\USUARIO\Desktop\Juego OCA\Juego OCA\Juego OCA\obj\Debug\Juego OCA.csproj.GenerateResource.Cache
+C:\Users\USUARIO\Desktop\Juego OCA\Juego OCA\Juego OCA\obj\Debug\Juego OCA.exe
+C:\Users\USUARIO\Desktop\Juego OCA\Juego OCA\Juego OCA\obj\Debug\Juego OCA.pdb
+C:\Users\USUARIO\Desktop\Juego OCA\Juego OCA\Juego OCA\obj\Debug\Juego_OCA.FormTablero.resources
+C:\Users\USUARIO\Desktop\Juego OCA\Juego OCA\Juego OCA\obj\Debug\Juego_OCA.FormInicio.resources
+C:\Users\USUARIO\Desktop\Juego OCA\Juego OCA\Juego OCA\obj\Debug\Juego_OCA.plTablero.resources
+F:\USB\SIO\Juego OCA\Juego OCA\Juego OCA\bin\Debug\Juego OCA.exe.config
+F:\USB\SIO\Juego OCA\Juego OCA\Juego OCA\obj\Debug\Juego OCA.exe
+F:\USB\SIO\Juego OCA\Juego OCA\Juego OCA\obj\Debug\Juego OCA.pdb
+F:\USB\SIO\Juego OCA\Juego OCA\Juego OCA\bin\Debug\Juego OCA.exe
+F:\USB\SIO\Juego OCA\Juego OCA\Juego OCA\bin\Debug\Juego OCA.pdb
+F:\USB\SIO\Juego OCA\Juego OCA\Juego OCA\obj\Debug\Juego OCA.csprojResolveAssemblyReference.cache
+F:\USB\SIO\Juego OCA\Juego OCA\Juego OCA\obj\Debug\Juego_OCA.FormInicio.resources
+F:\USB\SIO\Juego OCA\Juego OCA\Juego OCA\obj\Debug\Juego_OCA.FormMain.resources
+F:\USB\SIO\Juego OCA\Juego OCA\Juego OCA\obj\Debug\Juego_OCA.plTablero.resources
+F:\USB\SIO\Juego OCA\Juego OCA\Juego OCA\obj\Debug\Juego_OCA.Properties.Resources.resources
+F:\USB\SIO\Juego OCA\Juego OCA\Juego OCA\obj\Debug\Juego_OCA.FormTablero.resources
+F:\USB\SIO\Juego OCA\Juego OCA\Juego OCA\obj\Debug\Juego OCA.csproj.GenerateResource.Cache
+C:\Users\USUARIO\Desktop\Juego OCA USB\Juego OCA\Juego OCA\bin\Debug\Juego OCA.exe.config
+C:\Users\USUARIO\Desktop\Juego OCA USB\Juego OCA\Juego OCA\obj\Debug\Juego OCA.exe
+C:\Users\USUARIO\Desktop\Juego OCA USB\Juego OCA\Juego OCA\obj\Debug\Juego OCA.pdb
+C:\Users\USUARIO\Desktop\Juego OCA USB\Juego OCA\Juego OCA\obj\Debug\Juego OCA.csprojResolveAssemblyReference.cache
+C:\Users\USUARIO\Desktop\Juego OCA USB\Juego OCA\Juego OCA\obj\Debug\Juego_OCA.FormInicio.resources
+C:\Users\USUARIO\Desktop\Juego OCA USB\Juego OCA\Juego OCA\obj\Debug\Juego_OCA.FormMain.resources
+C:\Users\USUARIO\Desktop\Juego OCA USB\Juego OCA\Juego OCA\obj\Debug\Juego_OCA.plTablero.resources
+C:\Users\USUARIO\Desktop\Juego OCA USB\Juego OCA\Juego OCA\obj\Debug\Juego_OCA.Properties.Resources.resources
+C:\Users\USUARIO\Desktop\Juego OCA USB\Juego OCA\Juego OCA\obj\Debug\Juego_OCA.FormTablero.resources
+C:\Users\USUARIO\Desktop\Juego OCA USB\Juego OCA\Juego OCA\obj\Debug\Juego OCA.csproj.GenerateResource.Cache
+C:\Users\USUARIO\Desktop\Juego OCA USB\Juego OCA\Juego OCA\bin\Debug\Juego OCA.exe
+C:\Users\USUARIO\Desktop\Juego OCA USB\Juego OCA\Juego OCA\bin\Debug\Juego OCA.pdb
+C:\Users\USUARIO\Desktop\Juego OCA USB\Juego OCA\SIO---Juego\Juego OCA\bin\Debug\Juego OCA.exe.config
+C:\Users\USUARIO\Desktop\Juego OCA USB\Juego OCA\SIO---Juego\Juego OCA\obj\Debug\Juego OCA.exe
+C:\Users\USUARIO\Desktop\Juego OCA USB\Juego OCA\SIO---Juego\Juego OCA\obj\Debug\Juego OCA.pdb
