@@ -19,6 +19,7 @@ namespace Juego_OCA
             cargarCasillas();
             cargarDatosPreguntas();
             cargarLstPregUtilizadas();
+            cargarCastigos();
             lblCasillaJ1.Text = j1.posCasilla.ToString();
             lblCasillaJ2.Text = j2.posCasilla.ToString();
             turno = 1;
@@ -29,22 +30,39 @@ namespace Juego_OCA
         public List<string> lstPreguntas = new List<string>();
         public List<string> lstRespuestas = new List<string>();
         public List<int> lstRespCorrectas = new List<int>();
-        public List<bool> lstPreguntasUtilizadas = new List<bool>(49);
+        public List<bool> lstPreguntasUtilizadas = new List<bool>();
+        public List<bool> lstCastigosUtilizados = new List<bool>();
 
         //SoundPlayer sFicha = new SoundPlayer(Application.StartupPath + @"\Sonido\ficha.wav");
-        Random rnd = new Random();
+        Random rnd = new Random((int)DateTime.Now.Ticks);
         public int turno;
         public int turnoCastigo;
+        int contCastigoPosada = 0;
         int respCorrecta;
         int indicePregMostrada;
-        public bool esCastigo = false;
-        bool yaRespondio = false;
-        bool esCastigoPosada = false;
+
+        Castigo c = null;
+
+        public bool hayCastigo;
+        public bool esCastigoPuente = false;
+        public bool esCastigoPosada = false;
+        public bool esCastigoDado = false;
+        public bool esCastigoResbalon = false;
+        public bool esCastigoCalavera = false;
 
         Jugador j1 = new Jugador(1, 1);
         Jugador j2 = new Jugador(1, 2);
 
         manejarBD bd = new manejarBD();
+
+
+        private void cargarLstCastigosUtilizados()
+        {
+            for (int i=0; i < lstCastigosUtilizados.Count; i++)
+            {
+                lstCastigosUtilizados.Add(false);
+            }
+        }
 
         private void cargarLstPregUtilizadas()
         {
@@ -100,29 +118,17 @@ namespace Juego_OCA
             e.Handled = true;
         }
 
-        private void txtRespuesta_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsNumber(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else if (char.IsControl(e.KeyChar))
-            {
-                e.Handled = false;
-            }
-            else
-            {
-                e.Handled = true;
-            }
-        }
-
         public void btnLanzarDado_Click(object sender, EventArgs e)
         {
             int resultadoDado = rnd.Next(1, 7);
-            if (esCastigo)
+            if (esCastigoDado)
             {
                 MessageBox.Show("¡Sacaste " + resultadoDado + " en el tiro del dado! \n" + "Retrocederás " + resultadoDado + " casillas", "¡Info!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                hayCastigo = false;
                 moverFicha(-(resultadoDado));
+                esCastigoDado = false;
+                //btnLanzarDado.Enabled = true;
+                cambiarTurno();
             }
             else
             {
@@ -130,6 +136,9 @@ namespace Juego_OCA
                 lblDado.Text = Convert.ToString(resultadoDado);
                 moverFicha(resultadoDado);
                 btnLanzarDado.Enabled = false;
+                btnResp1.Enabled = true;
+                btnResp2.Enabled = true;
+                btnResp3.Enabled = true;
             }
         }
 
@@ -144,7 +153,7 @@ namespace Juego_OCA
                 }
                 pbFicha1.Location = lstCasillas[j1.posCasilla - 1].Location;
                 pbFicha1.Location = new Point(pbFicha1.Location.X + 10, pbFicha1.Location.Y + 30);
-                if (esCastigo == false)
+                if (hayCastigo == false)
                 {
                     mostrarPregunta();
                 }
@@ -157,7 +166,7 @@ namespace Juego_OCA
                 }
                 pbFicha2.Location = lstCasillas[j2.posCasilla - 1].Location;
                 pbFicha2.Location = new Point(pbFicha2.Location.X + 60, pbFicha2.Location.Y + 30);
-                if (esCastigo == false)
+                if (hayCastigo == false)
                 {
                     mostrarPregunta();
                 }
@@ -170,16 +179,65 @@ namespace Juego_OCA
 
         public void mostrarPregunta()
         {
-            indicePregMostrada = rnd.Next(1, 51) - 1;
+            indicePregMostrada = rnd.Next(0, 50)+1;
             if (lstPreguntasUtilizadas[indicePregMostrada] == false)
             {
                 txtPregunta.Text = indicePregMostrada + lstPreguntas[indicePregMostrada] + lstRespuestas[indicePregMostrada];
+                lstPreguntasUtilizadas[indicePregMostrada] = true;
             }
             else
             {
-                lstPreguntasUtilizadas[indicePregMostrada] = true;
                 mostrarPregunta();
             }
+        }
+
+        public void cargarCastigos()
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                lstCastigosUtilizados.Add(false);
+            }
+        }
+
+        public void restaurarCastigos()
+        {
+            for (int i = 0; i < lstCastigosUtilizados.Count; i++)
+            {
+                lstCastigosUtilizados[i] = false;
+            }
+        }
+
+        public void siHayQueRestaurarCastigos()
+        {
+            int contTrue = 0;
+            for (int i = 0; i < lstCastigosUtilizados.Count; i++)
+            {
+                if (lstCastigosUtilizados[i] == true)
+                {
+                    contTrue++;
+                }
+                if(contTrue == lstCastigosUtilizados.Count )
+                {
+                    restaurarCastigos();
+                }
+            }
+        }
+
+        private Castigo crearCastigo()
+        {
+            //int nCastigo = rnd.Next(1, 6) - 1;
+            int nCastigo = rnd.Next(0, 10);
+            siHayQueRestaurarCastigos();
+            if (lstCastigosUtilizados[nCastigo] == false)
+            {
+                c = new Castigo(nCastigo);
+                lstCastigosUtilizados[nCastigo] = true;
+            }
+            else
+            {
+                crearCastigo();
+            }
+            return c;
         }
 
         public void compararRespuesta(int n)
@@ -187,60 +245,77 @@ namespace Juego_OCA
             if (respCorrecta == lstRespCorrectas[n])
             {
                 MessageBox.Show("Respuesta Correcta, quedate ahí", "¡ACERTASTE!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                esCastigo = false;
+                hayCastigo = false;
+                btnLanzarDado.Enabled = true;
+                btnResp1.Enabled = true;
+                btnResp2.Enabled = true;
+                btnResp3.Enabled = true;
+                cambiarTurno();
             }
             else
             {
-                esCastigo = true;
-                Castigo c = new Castigo();
+                hayCastigo = true;
+                crearCastigo();
                 MessageBox.Show("Escogiste la equivocada tu CASTIGO es \n " + c.tipo + "\n" + c.descripcion, "¡OH OH CASTIGO!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 switch (c.numCastigo)
                 {
                     case 1:
                         c.puente(this);
+                        esCastigoPuente = true;
                         break;
                     case 2:
                         c.posada(this);
+                        esCastigoPosada = true;
                         break;
                     case 3:
                         c.dado(this);
+                        esCastigoDado = true;
                         break;
                     case 4:
                         c.resbalon(this);
+                        esCastigoResbalon = true;
                         break;
                     case 5:
                         c.calavera(this);
+                        esCastigoCalavera = true;
                         break;
                 }
             }
-            cambiarTurno();
+            
         }
 
         public void cambiarTurno()
-        { int cont = 0;
-            if (turno == 1)
+        {
+            if (esCastigoPosada)
             {
-                turno++;
-            }
-            else
+                contCastigoPosada++;
+                if (contCastigoPosada == 2)
+                {
+                    esCastigoPosada = false;
+                    hayCastigo = false;
+                    contCastigoPosada = 0;
+                }
+            } else
             {
-                turno--;
+                if (turno == 1)
+                {
+                    turno++;
+                }
+                else if (turno == 2)
+                {
+                    turno--;
+                }
             }
-             if (turno == 1 && esCastigoPosada)
-            {
-                cont++;
-                cambiarTurno();
-            }
-            esCastigo = false;
-            btnResp1.Enabled = true;
-            btnResp2.Enabled = true;
-            btnResp3.Enabled = true;
             btnLanzarDado.Enabled = true;
+            btnResp1.Enabled = false;
+            btnResp2.Enabled = false;
+            btnResp3.Enabled = false;
+            lblTurno.Text = Convert.ToString(turno);
+            txtPregunta.Clear();
         }
 
         private void btnResp1_Click(object sender, EventArgs e)
         {
-            yaRespondio = true;
             btnResp2.Enabled = false;
             btnResp3.Enabled = false;
             respCorrecta = 1;
@@ -249,7 +324,6 @@ namespace Juego_OCA
 
         private void btnResp2_Click(object sender, EventArgs e)
         {
-            yaRespondio = true;
             btnResp1.Enabled = false;
             btnResp3.Enabled = false;
             respCorrecta = 2;
@@ -258,7 +332,6 @@ namespace Juego_OCA
 
         private void btnResp3_Click(object sender, EventArgs e)
         {
-            yaRespondio = true;
             btnResp1.Enabled = false;
             btnResp2.Enabled = false;
             respCorrecta = 3;

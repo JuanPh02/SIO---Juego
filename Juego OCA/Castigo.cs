@@ -13,9 +13,9 @@ namespace Juego_OCA
         public string tipo;
         public string descripcion;
 
-        public Castigo()
+        public Castigo(int nC)
         {
-            numCastigo = rnd.Next(1, 6);
+            this.numCastigo = nC;
             switch (numCastigo)
             {
                 case 1:
@@ -44,30 +44,35 @@ namespace Juego_OCA
         public void puente(FormTablero fT)
         {
             fT.moverFicha(-3);
-        
+            fT.esCastigoPuente = false;
+            fT.hayCastigo = false;
+            fT.cambiarTurno();
         }
 
         public void posada(FormTablero fT)
         {
             fT.cambiarTurno();
-            
         }
 
         public void dado(FormTablero fT)
         {
             fT.btnLanzarDado.Enabled = true;
-       
         }
 
         public void resbalon(FormTablero fT )
         {
             fT.moverFicha(-2);
+            fT.esCastigoResbalon = false;
+            fT.hayCastigo = false;
+            fT.cambiarTurno();
         }
 
         public void calavera(FormTablero fT)
         {
             fT.moverFicha(-30);
-           
+            fT.esCastigoCalavera = false;
+            fT.hayCastigo = false;
+            fT.cambiarTurno();
         }
     }
 }
