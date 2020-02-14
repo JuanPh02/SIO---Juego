@@ -245,7 +245,7 @@ namespace Juego_OCA
             indicePregMostrada = rnd.Next(0, 50);
             if (lstPreguntasUtilizadas[indicePregMostrada] == false)
             {
-                txtPregunta.Text = indicePregMostrada + lstPreguntas[indicePregMostrada] + lstRespuestas[indicePregMostrada];
+                txtPregunta.Text =  lstPreguntas[indicePregMostrada] + lstRespuestas[indicePregMostrada];
                 lstPreguntasUtilizadas[indicePregMostrada] = true;
             }
             else
@@ -361,7 +361,6 @@ namespace Juego_OCA
                         break;
                     case 2:
                         c.posada(this);
-                        esCastigoPosada = true;
                         break;
                     case 3:
                         c.dado(this);
