@@ -19,7 +19,6 @@ namespace Juego_OCA
             cargarCasillas();
             cargarDatosPreguntas();
             cargarLstPregUtilizadas();
-            cargarCastigos();
             lblCasillaJ1.Text = j1.posCasilla.ToString();
             lblCasillaJ2.Text = j2.posCasilla.ToString();
             turno = 1;
@@ -31,7 +30,6 @@ namespace Juego_OCA
         public List<string> lstRespuestas = new List<string>();
         public List<int> lstRespCorrectas = new List<int>();
         public List<bool> lstPreguntasUtilizadas = new List<bool>();
-        public List<bool> lstCastigosUtilizados = new List<bool>();
 
         //SoundPlayer sFicha = new SoundPlayer(Application.StartupPath + @"\Sonido\ficha.wav");
         Random rnd = new Random((int)DateTime.Now.Ticks);
@@ -50,19 +48,16 @@ namespace Juego_OCA
         public bool esCastigoResbalon = false;
         public bool esCastigoCalavera = false;
 
+        bool puenteUtilizado;
+        bool posadaUtilizado;
+        bool dadoUtilizado;
+        bool resbalonUtilizado;
+        bool calaveraUtilizado;
+
         Jugador j1 = new Jugador(1, 1);
         Jugador j2 = new Jugador(1, 2);
 
         manejarBD bd = new manejarBD();
-
-
-        private void cargarLstCastigosUtilizados()
-        {
-            for (int i=0; i < lstCastigosUtilizados.Count; i++)
-            {
-                lstCastigosUtilizados.Add(false);
-            }
-        }
 
         private void cargarLstPregUtilizadas()
         {
@@ -144,29 +139,51 @@ namespace Juego_OCA
 
         public void moverFicha(int resultadoDado)
         {
+            int posAnterior;
             if (turno == 1)
             {
+                posAnterior = j1.posCasilla;
                 j1.posCasilla = j1.posCasilla + resultadoDado;
-                if (j1.posCasilla <= 1)
+                if (j1.posCasilla < 1)
                 {
                     j1.posCasilla = 1;
                 }
+                if(j1.posCasilla > 30)
+                {
+                    j1.posCasilla = posAnterior;
+                }
                 pbFicha1.Location = lstCasillas[j1.posCasilla - 1].Location;
+                estaEnOca();
                 pbFicha1.Location = new Point(pbFicha1.Location.X + 10, pbFicha1.Location.Y + 30);
-                if (hayCastigo == false)
+                if (j1.posCasilla == 30)
+                {
+                    ganoJugador(1);
+                }
+                if (hayCastigo == false || esCastigoPosada)
                 {
                     mostrarPregunta();
                 }
             } else
             {
+                posAnterior = j2.posCasilla;
                 j2.posCasilla = j2.posCasilla + resultadoDado;
                 if (j2.posCasilla <= 1)
                 {
                     j2.posCasilla = 1;
                 }
+                if (j2.posCasilla > 30)
+                {
+                    j2.posCasilla = posAnterior;
+                    MessageBox.Show("Deberás sacar en el dado las casillas exactas para GANAR", "¡I N F O!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    cambiarTurno();
+                }
                 pbFicha2.Location = lstCasillas[j2.posCasilla - 1].Location;
                 pbFicha2.Location = new Point(pbFicha2.Location.X + 60, pbFicha2.Location.Y + 30);
-                if (hayCastigo == false)
+                if (j2.posCasilla == 30)
+                {
+                    ganoJugador(2);
+                }
+                if (hayCastigo == false || esCastigoPosada)
                 {
                     mostrarPregunta();
                 }
@@ -177,9 +194,55 @@ namespace Juego_OCA
             //sFicha.Play();
         }
 
+        private void estaEnOca()
+        {
+            if (j1.turno == turno)
+            {
+                if (lstCasillas[j1.posCasilla - 1] == pbOca7)
+                {
+                    j1.posCasilla = 12;
+                    pbFicha1.Location = pbOca12.Location;
+                    pbFicha1.Location = new Point(pbFicha1.Location.X + 60, pbFicha1.Location.Y + 30);
+                }
+                else if (lstCasillas[j1.posCasilla - 1] == pbOca12)
+                {
+                    j1.posCasilla = 19;
+                    pbFicha1.Location = pbOca19.Location;
+                    pbFicha1.Location = new Point(pbFicha1.Location.X + 60, pbFicha1.Location.Y + 30);
+                }
+                else if (lstCasillas[j1.posCasilla - 1] == pbOca19)
+                {
+                    j1.posCasilla = 24;
+                    pbFicha1.Location = pbOca24.Location;
+                    pbFicha1.Location = new Point(pbFicha1.Location.X + 60, pbFicha1.Location.Y + 30);
+                }
+            }
+            else if (j2.turno == turno)
+            {
+                if (lstCasillas[j1.posCasilla - 1] == pbOca7)
+                {
+                    j1.posCasilla = 12;
+                    pbFicha1.Location = pbOca12.Location;
+                    pbFicha1.Location = new Point(pbFicha1.Location.X + 60, pbFicha1.Location.Y + 30);
+                }
+                else if (lstCasillas[j1.posCasilla - 1] == pbOca12)
+                {
+                    j1.posCasilla = 19;
+                    pbFicha1.Location = pbOca19.Location;
+                    pbFicha1.Location = new Point(pbFicha1.Location.X + 60, pbFicha1.Location.Y + 30);
+                }
+                else if (lstCasillas[j1.posCasilla - 1] == pbOca19)
+                {
+                    j1.posCasilla = 24;
+                    pbFicha1.Location = pbOca24.Location;
+                    pbFicha1.Location = new Point(pbFicha1.Location.X + 60, pbFicha1.Location.Y + 30);
+                }
+            }
+        }
+
         public void mostrarPregunta()
         {
-            indicePregMostrada = rnd.Next(0, 50)+1;
+            indicePregMostrada = rnd.Next(0, 50);
             if (lstPreguntasUtilizadas[indicePregMostrada] == false)
             {
                 txtPregunta.Text = indicePregMostrada + lstPreguntas[indicePregMostrada] + lstRespuestas[indicePregMostrada];
@@ -191,60 +254,93 @@ namespace Juego_OCA
             }
         }
 
-        public void cargarCastigos()
-        {
-            for (int i = 0; i < 5; i++)
-            {
-                lstCastigosUtilizados.Add(false);
-            }
-        }
-
         public void restaurarCastigos()
         {
-            for (int i = 0; i < lstCastigosUtilizados.Count; i++)
+            if(puenteUtilizado && posadaUtilizado && resbalonUtilizado && dadoUtilizado && calaveraUtilizado)
             {
-                lstCastigosUtilizados[i] = false;
-            }
-        }
-
-        public void siHayQueRestaurarCastigos()
-        {
-            int contTrue = 0;
-            for (int i = 0; i < lstCastigosUtilizados.Count; i++)
-            {
-                if (lstCastigosUtilizados[i] == true)
-                {
-                    contTrue++;
-                }
-                if(contTrue == lstCastigosUtilizados.Count )
-                {
-                    restaurarCastigos();
-                }
+                puenteUtilizado = false;
+                posadaUtilizado = false;
+                resbalonUtilizado = false;
+                dadoUtilizado = false;
+                calaveraUtilizado = false;
             }
         }
 
         private Castigo crearCastigo()
         {
-            //int nCastigo = rnd.Next(1, 6) - 1;
-            int nCastigo = rnd.Next(0, 10);
-            siHayQueRestaurarCastigos();
-            if (lstCastigosUtilizados[nCastigo] == false)
+            int nCastigo = rnd.Next(1, 6);
+            switch (nCastigo)
             {
-                c = new Castigo(nCastigo);
-                lstCastigosUtilizados[nCastigo] = true;
+                case 1:
+                    if(puenteUtilizado == false)
+                    {
+                        c = new Castigo(1);
+                        puenteUtilizado = true;
+                    } else
+                    {
+                        crearCastigo();
+                    }
+                    break;
+                case 2:
+                    if(posadaUtilizado == false)
+                    {
+                        c = new Castigo(2);
+                        posadaUtilizado = true;
+                    }
+                    else
+                    {
+                        crearCastigo();
+                    }
+                    break;
+                case 3:
+                    if (dadoUtilizado == false)
+                    {
+                        c = new Castigo(3);
+                        dadoUtilizado = true;
+                    }
+                    else
+                    {
+                        crearCastigo();
+                    }
+                    break;
+                case 4:
+                    if (resbalonUtilizado == false)
+                    {
+                        c = new Castigo(4);
+                        resbalonUtilizado = true;
+                    }
+                    else
+                    {
+                        crearCastigo();
+                    }
+                    break;
+                case 5:
+                    if (calaveraUtilizado == false)
+                    {
+                        c = new Castigo(5);
+                        calaveraUtilizado = true;
+                    }
+                    else
+                    {
+                        crearCastigo();
+                    }
+                    break;
+                default:
+                    crearCastigo();
+                    break;
             }
-            else
-            {
-                crearCastigo();
-            }
+            restaurarCastigos();
             return c;
         }
+            
+        
 
         public void compararRespuesta(int n)
         {
             if (respCorrecta == lstRespCorrectas[n])
             {
                 MessageBox.Show("Respuesta Correcta, quedate ahí", "¡ACERTASTE!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                estaEnOca();
                 hayCastigo = false;
                 btnLanzarDado.Enabled = true;
                 btnResp1.Enabled = true;
@@ -336,6 +432,22 @@ namespace Juego_OCA
             btnResp2.Enabled = false;
             respCorrecta = 3;
             compararRespuesta(indicePregMostrada);
+        }
+
+        private void ganoJugador(int j)
+        {
+            string jug;
+            if(j == 1)
+            {
+                jug = "JUGADOR 1";
+            } else
+            {
+                jug = "JUGADOR 2";
+            }
+            MessageBox.Show(jug + "\n H A S    G A N A D O", "¡G A N A D O R! ¡G A N A D O R!", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            FormInicio fInicio = new FormInicio();
+            this.Close();
+            fInicio.Show();
         }
     }
 }

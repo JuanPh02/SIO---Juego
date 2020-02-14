@@ -51,6 +51,7 @@ namespace Juego_OCA
 
         public void posada(FormTablero fT)
         {
+            fT.esCastigoPosada = true;
             fT.cambiarTurno();
         }
 
